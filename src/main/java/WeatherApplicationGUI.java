@@ -19,24 +19,58 @@ public class WeatherApplicationGUI extends JFrame {
     }
 
 
-    private void addGuiComponents(){
+    private void addGuiComponents() {
         JTextField searchField = new JTextField();
-        searchField.setBounds(15,15,351,45);
-        searchField.setFont(new Font("Dialog",Font.PLAIN,24));
+        searchField.setBounds(15, 15, 351, 45);
+        searchField.setFont(new Font("Dialog", Font.PLAIN, 24));
         add(searchField);
 
         JButton searchButton = new JButton(loadImage("src/main/resources/search.png"));
         searchButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        searchButton.setBounds(375,13,47,45);
+        searchButton.setBounds(375, 13, 47, 45);
         add(searchButton);
+
+        JLabel weatherConditionImage = new JLabel(loadImage("src/main/resources/cloudy.png"));
+        weatherConditionImage.setBounds(0, 125, 450, 217);
+        add(weatherConditionImage);
+
+        JLabel temperatureText = new JLabel("10 C");
+        temperatureText.setBounds(0, 350, 450, 54);
+        temperatureText.setFont(new Font("Dialog", Font.BOLD, 48));
+        temperatureText.setHorizontalAlignment(SwingConstants.CENTER);
+        add(temperatureText);
+
+        JLabel weatherConditionDesc = new JLabel("Cloudy");
+        weatherConditionDesc.setBounds(0, 405, 450, 36);
+        weatherConditionDesc.setFont(new Font("Dialog", Font.PLAIN, 32));
+        weatherConditionDesc.setHorizontalAlignment(SwingConstants.CENTER);
+        add(weatherConditionDesc);
+
+        JLabel humidityImage = new JLabel(loadImage("src/main/resources/humidity.png"));
+        humidityImage.setBounds(15,500,74,66);
+        add(humidityImage);
+
+        JLabel humidityText = new JLabel(("<html><b>Humidity</b> 100%</html>"));
+        humidityText.setBounds(90,500,85,55);
+        humidityText.setFont(new Font("Dialog",Font.PLAIN, 15));
+        add(humidityText);
+
+        JLabel windSpeedImage = new JLabel(loadImage("src/main/resources/windspeed.png"));
+        windSpeedImage.setBounds(220,500,74,66);
+        add(windSpeedImage);
+
+        JLabel windSpeedText = new JLabel("<html><b>WindSpeed</b> 15km/h</html>");
+        windSpeedText.setBounds(310,500,85,55);
+        windSpeedText.setFont(new Font("Dialog",Font.PLAIN,15));
+        add(windSpeedText);
     }
 
-    private ImageIcon loadImage(String resourcePath){
-        try{
+    private ImageIcon loadImage(String resourcePath) {
+        try {
             BufferedImage image = ImageIO.read(new File(resourcePath));
 
             return new ImageIcon(image);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
